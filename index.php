@@ -8,6 +8,9 @@
 </head>
 <body>
     <nav class="navbar">
+        <h1 id="titulopag">Página principal</h1>
+    </nav>
+    <nav class="navbar">
         <div class="auth-links">
             <a href="paginises.php" class="login">INICIAR SESIÓN</a>
             <a href="pagregistro.php" class="register">REGISTRARSE</a>
@@ -37,6 +40,5 @@
         }
         echo "</table>";
     ?>
-    
 </body>
 </html>

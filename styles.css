@@ -10,9 +10,21 @@ body {
 /*Estilos H1*/
 .prh1 {
     padding-top: 20px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
-    color: #333;
+    color: #b9b9b9;
+}
+
+#titulopag {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #b9b9b9;
+}
+.h1prod {
+  padding-top: 20px;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #333;
 }
 
 /*Estilos Tabla de Productos*/
@@ -49,12 +61,20 @@ td img {
     justify-content: center;
     align-items: center;
     background-color: #333;
-    padding: 30px 20px;
+    padding: 20px 20px;
   }
+.navbar2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  padding-bottom: 20px;
+}
   /* Enlaces de autenticación */
   .auth-links {
     display: flex;
     gap: 15px;
+    padding-bottom: 20px;
   }
   .auth-links a {
     color: white;
@@ -67,4 +87,12 @@ td img {
   }
   .auth-links a:hover {
     background-color: #777;
+  }
+
+  /*Estilos barra hr*/
+  hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 20px 0;
   }

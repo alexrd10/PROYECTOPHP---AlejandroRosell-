@@ -12,9 +12,13 @@
             $row_count = $result->num_rows;
 
             if ($sql == "select * from usuarios where nombre='admin' and contraseña='123'" && $row_count >= 1) {
+                session_start();
+                $_SESSION['usuario'] = $nombreusuario;
                 header("Location: pagadmin.php");
             }
             elseif ($row_count >= 1) {
+                session_start();
+                $_SESSION['usuario'] = $nombreusuario;
                 header("Location: pagusuario.php");
             }
             else {
