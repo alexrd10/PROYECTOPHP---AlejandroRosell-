@@ -16,7 +16,7 @@
             <a href="pagregistro.php" class="register">REGISTRARSE</a>
         </div>
     </nav>
-    <h1 class="prh1">Productos</h1>  
+    <h1 class="h1prod">Productos</h1>  
     <?php
         # Tabla con productos
         include("conexion.php");
