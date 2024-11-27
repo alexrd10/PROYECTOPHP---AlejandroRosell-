@@ -23,7 +23,6 @@
     </nav>
     <?php
         echo "<h1 class='h1prod'>Productos</h1>";
-
         # Tabla con productos
         include("conexion.php");
         $sql = "select nombre, descripcion, precio, imagen from productos";
@@ -45,6 +44,33 @@
             echo "</tr>";
         }
         echo "</table>";
+    ?>
+    <br>
+    <hr>
+    <h1 class="h1prod">Tus pedidos</h1>
+    <?php
+        $usuario = $_SESSION['usuario'];
+        $sql2 = "select id_pedido, fecha, importe_total from pedidos where usuario = '$usuario'";
+        $result2 = $conn->query($sql2);
+        $row_count2 = $result2->num_rows;
+        if ($row_count2 > 0) {
+            echo "<table>";
+            echo "<tr>";
+            echo "<th>ID_PEDIDO</th>";
+            echo "<th>FECHA_PEDIDO</th>";
+            echo "<th>IMPORTE_TOTAL</th>";
+            echo "</tr>";
+            while($row2 = $result2->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>".$row2['id_pedido']."</td>";
+                echo "<td>".$row2['fecha']."</td>";
+                echo "<td>".$row2['importe_total']." €</td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+        }else {
+            echo "<p class='carrotexto'>Aun no has hecho ningun pedido</p>";
+        }
     ?>
     <br>
     <hr>
@@ -77,7 +103,7 @@
                     echo "<p class='carrotexto'>$prod: $cantidad x $precioEJEMPLO € = $resultadoEJEMPLO €</p>";
                 }
             }
-            /* Estas variables son por si las variables aun no estan definidas, para que el valor por defecto sea 0 */
+            /* Esto que declaro es por si las variables aun no estan definidas, para que el valor por defecto sea 0 */
             $resultadoQM =  $resultadoQM ?? 0;
             $resultadoTOMCHERR =  $resultadoTOMCHERR ?? 0;
             $resultadoTURR =  $resultadoTURR ?? 0;
@@ -85,16 +111,19 @@
 
             /* Calcular precio total */
             $preciototal = $resultadoQM + $resultadoTOMCHERR + $resultadoTURR + $resultadoEJEMPLO;
-            echo "<p>Precio total del carrito = ".$preciototal." €</p>";
+            echo "<p class='carrotexto'>Precio total del carrito = ".$preciototal." €</p>";
+            $_SESSION['preciototal'] = $preciototal;
         }
         else {
             echo "<p class='carrotexto'>El carrito esta vacio</p>";
         }
-    
     ?>
-    </div>
+    <a class="boton" href="addCarrito.php?finalizar=1">Finalizar Pedido</a>
+    <br>
+    <br>
     <br>
     <hr>
+    </div>
     <h1 class="h1prod">Añadir o restar productos al carrito</h1>
     <div class="form-box">
         <form action="addCarrito.php" method="GET">
@@ -127,6 +156,8 @@
             <input type="submit" value="Vaciar">
         </form>
     </div>
+    <br>
+    <br>
     <br>
 </body>
 </html>
