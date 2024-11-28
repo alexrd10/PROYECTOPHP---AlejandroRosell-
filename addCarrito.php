@@ -26,5 +26,5 @@ if (isset($_SESSION['preciototal']) && isset($_SESSION['carrito']) && isset($_SE
 if (isset($_REQUEST['vaciar']) && $_REQUEST['vaciar'] == 1) {
     unset($_SESSION['carrito']);
 }
-header("Location: pagusuario.php")
+header("Location: pagusuario.php");
 ?>
